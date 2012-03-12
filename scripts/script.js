@@ -1,5 +1,5 @@
 $(function() {
-var commentsTemplate = '<div class="feedback">{{description}}</div>';
+var commentsTemplate = '<div class="feedback"><div class="feedback-area"/><label class="description">{{description}}</label></div>';
 
 var showOrHide = true;
 
@@ -25,6 +25,11 @@ function createFeedback(feedbackData) {
   return $(Mustache.render(commentsTemplate, feedbackData));
 };
 
+function initializeElements() {
+  $('.feedback').draggable();
+  $('.feedback-area').resizable();
+}
+
 function loadInitialData() {
    for(feedback in initialData) {
       var data = initialData[feedback];
@@ -36,7 +41,7 @@ function loadInitialData() {
       };
 
       $('html').append($(div).offset(coordinates));
-      $('.feedback').draggable().resizable();
+      initializeElements();
     };
 };
 
@@ -53,7 +58,7 @@ $('html').not('.feedback').click(function(e) {
     });
 
     $(html).append(div.offset(coordinates));
-    $('.feedback').draggable().resizable();
+    initializeElements();
 });
 
 $('#hide-show-button').click(function(event) {
