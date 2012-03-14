@@ -1,10 +1,18 @@
+@import "color.less";
+
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("images/bad-homepage.jpg");
+}
+
 .feedback {
   position: absolute;
 }
 
 .feedback-area {
   height: 200px;
-  border: 2px solid #555;
+  border: 3px solid @green;
   width: 200px;
   border-radius: 7px;
   background-color: transparent;
@@ -14,23 +22,24 @@
 }
 
 .description {
-  background-color: #DDD;
+  background-color: @lightgrey;
   padding: 5px;
   border-radius: 15px;
   position: relative;
   top: 10px;
-  border: 1px solid #AAA;
+  border: 1px solid @middlegrey;
+  color: @darkgrey;
 }
 
 #hide-show-button {
   margin-top: 50%;
-  border: 2px solid #777;
+  border: 2px solid @middlegrey;
   height: 50px;
   position: absolute;
   border-radius: 7px;
   cursor: pointer;
   width: 50px;
   text-align: center;
-  background-color: #eee;  
+  background-color: @lightgrey;
+  color: @darkgrey;  
 }
-
