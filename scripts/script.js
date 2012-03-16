@@ -1,5 +1,11 @@
 $(function() {
-var commentsTemplate = '<div class="feedback"><div class="feedback-area"/><label class="description">{{description}}</label></div>';
+var commentsTemplate = 
+'<div class="feedback">' +
+'  <div class="feedback-area"/>' +
+'    <label class="description">' +
+'      {{description}}' +
+'    </label>' +
+'</div>';
 
 var showOrHide = true;
 
@@ -13,57 +19,51 @@ function initializeElements() {
 }
 
 function loadInitialData() {
-   for(feedback in initialData) {
-      var data = initialData[feedback];
-      var div = createFeedback(data);
+   for(index in initialData) {
+      var feedbackData = initialData[index];
+      var div = createFeedback(feedbackData);
 
       var coordinates = {
-        top: data.top,
-        left: data.left
+        top: feedbackData.top,
+        left: feedbackData.left
       };
+      
+      $(div).find('.feedback-area')
+        .css('height', feedbackData.height + 'px')
+        .css('width', feedbackData.width + 'px');
 
       $('html').append($(div).offset(coordinates));
+      
       initializeElements();
     };
 };
 
-$('html').not('.feedback').click(function(e) {
+$('#add-new-feedback').click(function() {
     var div = createFeedback({description: 'testing this shit'});
-    var html = this;
-    var coordinates = {
-      top: e.pageY,
-      left: e.pageX
-    };
-    
-    $(div).click(function(event) {
-      event.stopPropagation();
-    });
 
-    $(html).append(div.offset(coordinates));
+    var coordinates = {
+      top: 0,
+      left: 0
+    };
+
+    $('html').append(div.offset(coordinates));
+  
     initializeElements();
 });
 
-$('#hide-show-button').click(function(event) {
+$('#show-hide-button').click(function(event) {
   showOrHide = !showOrHide;
 
   $('.feedback').toggle(showOrHide);
 
   var button = $(this);
 
-  if(button.text() == "Hide") {
-    button.text("Show");
+  if(button.text() == "Hide feedbacks") {
+    button.text("Show feedbacks");
   } else {
-    button.text("Hide");
+    button.text("Hide feedbacks");
   }
-  
-  event.stopPropagation();
 });
 
   loadInitialData();
-
-  $('.feedback').click(function(event) {
-    event.stopPropagation(); 
-  });
-
-  //var dataObj = $.parseJSON(data);
 });

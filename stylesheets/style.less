@@ -2,8 +2,8 @@
 
 body {
   background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("images/bad-homepage.jpg");
+  background-image: url("images/siteGlauber.jpg");
+  height: 1550px;
 }
 
 .feedback {
@@ -11,9 +11,7 @@ body {
 }
 
 .feedback-area {
-  height: 200px;
   border: 3px solid @green;
-  width: 200px;
   border-radius: 7px;
   background-color: transparent;
   min-height: 50px;
@@ -31,15 +29,28 @@ body {
   color: @darkgrey;
 }
 
-#hide-show-button {
+#show-hide-button, #add-new-feedback {
+  cursor: pointer;
+  color: @darkgrey;
+  float:left;
+}
+
+#show-hide-button {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+#add-new-feedback {
+  padding-top: 15px;
+  padding-left: 5px;
+}
+
+#ui-feedback {
   margin-top: 50%;
   border: 2px solid @middlegrey;
-  height: 50px;
+  height: 100px;
   position: absolute;
   border-radius: 7px;
-  cursor: pointer;
-  width: 50px;
-  text-align: center;
+  width: 90px;
   background-color: @lightgrey;
-  color: @darkgrey;  
 }
