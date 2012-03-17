@@ -7,7 +7,7 @@ var commentsTemplate =
 '    </label>' +
 '</div>';
 
-var showOrHide = true;
+var isShowing = true;
 
 function createFeedback(feedbackData) {
   return $(Mustache.render(commentsTemplate, feedbackData));
@@ -52,16 +52,14 @@ $('#add-new-feedback').click(function() {
 });
 
 $('#show-hide-button').click(function(event) {
-  showOrHide = !showOrHide;
+  isShowing = !isShowing;
 
-  $('.feedback').toggle(showOrHide);
+  $('.feedback').fadeToggle(isShowing);
 
-  var button = $(this);
-
-  if(button.text() == "Hide feedbacks") {
-    button.text("Show feedbacks");
+  if($(this).text() == "Hide feedbacks") {
+    $(this).text("Show feedbacks");
   } else {
-    button.text("Hide feedbacks");
+    $(this).text("Hide feedbacks");
   }
 });
 
