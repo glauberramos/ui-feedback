@@ -1,12 +1,4 @@
-$(function() {
-var commentsTemplate = 
-'<div class="feedback">' +
-'  <div class="feedback-area"/>' +
-'    <label class="description">' +
-'      {{description}}' +
-'    </label>' +
-'</div>';
-
+require(["templates"], $(function() {
 var isShowing = true;
 
 function createFeedback(feedbackData) {
@@ -65,3 +57,5 @@ $('#show-hide-button').click(function(event) {
 
   loadInitialData();
 });
+
+);
