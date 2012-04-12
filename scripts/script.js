@@ -57,5 +57,3 @@ $('#show-hide-button').click(function(event) {
 
   loadInitialData();
 });
-
-);
