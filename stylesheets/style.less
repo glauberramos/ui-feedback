@@ -4,6 +4,7 @@ body {
   background-repeat: no-repeat;
   background-image: url("images/siteGlauber.jpg");
   height: 1550px;
+  font-family: 'Voces', cursive;
 }
 
 .feedback {
@@ -35,23 +36,27 @@ body {
   float: left;
 }
 
-#show-hide-button, #add-new-feedback {
-  cursor: pointer;
-  color: @darkgrey;
-  float:left;
+#add-new-feedback {
+  font-size: 2.7em;
+  line-height: 23px;
+}
+
+#show-hide-button {
+  font-size: 1.13em;
 }
 
 #show-hide-button, #add-new-feedback {
+  cursor: pointer;
+  float:left;
   padding-top: 15px;
-  background-color: #999;
+  background-color: @darkgrey;
   border-radius: 22px;
   height: 34px;
   margin: 3px;
   text-align: right;
   width: 93px;
   padding-right: 12px;
-  font-size: 1.13em;
-  color: #555;
+  color: @darkergrey;
 }
 
 #add {
@@ -63,7 +68,7 @@ body {
 }
 
 #add, #show {
-  border: 5px solid #999;
+  border: 5px solid @darkgrey;
   position: fixed;
   border-radius: 30px;
   width: 112px;

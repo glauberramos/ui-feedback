@@ -1,5 +1,7 @@
 <html>
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" type="text/css" href="https://raw.github.com/necolas/normalize.css/master/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="stylesheets/vendor/jquery-ui-1.8.18.custom.css"/>
 
@@ -20,8 +22,26 @@
       <span id="show-hide-button">Hide All</span>
     </div>
     <div id="add">
-      <span id="add-new-feedback">Add All</span>
+      <span id="add-new-feedback">+</span>
     </div>
     </div>
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '119092938223182',
+            status     : true, 
+            cookie     : true,
+            xfbml      : true,
+            oauth      : true,
+          });
+        };
+        (function(d){
+           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+           js = d.createElement('script'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           d.getElementsByTagName('head')[0].appendChild(js);
+         }(document));
+      </script>
+      <div class="fb-login-button">Login with Facebook</div>
   </body>
 </html>
