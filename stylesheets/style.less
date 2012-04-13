@@ -22,11 +22,17 @@ body {
 .description {
   background-color: @lightgrey;
   padding: 5px;
+  margin-top: 10px;
+  float: left;
   border-radius: 15px;
-  position: relative;
-  top: 10px;
   border: 1px solid @middlegrey;
   color: @darkgrey;
+}
+
+.comment {
+  margin-top: 10px;
+  clear: both;
+  float: left;
 }
 
 #show-hide-button, #add-new-feedback {
@@ -35,22 +41,34 @@ body {
   float:left;
 }
 
-#show-hide-button {
-  padding-top: 5px;
-  padding-left: 5px;
-}
-
-#add-new-feedback {
+#show-hide-button, #add-new-feedback {
   padding-top: 15px;
-  padding-left: 5px;
+  background-color: #999;
+  border-radius: 22px;
+  height: 34px;
+  margin: 3px;
+  text-align: right;
+  width: 93px;
+  padding-right: 12px;
+  font-size: 1.13em;
+  color: #555;
 }
 
-#ui-feedback {
-  margin-top: 50%;
-  border: 2px solid @middlegrey;
-  height: 100px;
-  position: absolute;
-  border-radius: 7px;
-  width: 90px;
-  background-color: @lightgrey;
+#add {
+  margin-top: 240px;
+}
+
+#show {
+  margin-top: 169px;
+}
+
+#add, #show {
+  border: 5px solid #999;
+  position: fixed;
+  border-radius: 30px;
+  width: 112px;
+  background-color: rgba(90, 250, 90, 0.5);
+  left: -37px;
+  height: 55px;
+  -webkit-transition: all 0.4s linear;
 }
