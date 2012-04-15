@@ -1,3 +1,5 @@
+var userImage;
+
 require(["scripts/templates", "scripts/data"], function() {
   var isShowing = true;
 
@@ -62,4 +64,14 @@ require(["scripts/templates", "scripts/data"], function() {
 
     $($(this).siblings('.comments')).append(Mustache.render(commentTemplate, data));
   });
+
+  $('#load-image').click() {
+    FB.api({
+      method: 'fql.query',
+      query: 'SELECT pic_square FROM user WHERE uid=me()'
+    },
+    function(response) {
+      userImage = response[0].pic_square;
+    });
+  }
 });
