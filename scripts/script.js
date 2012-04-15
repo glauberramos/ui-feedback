@@ -75,10 +75,10 @@ require(["scripts/templates", "scripts/data"], function() {
 
     var data = {
       text: $(this).siblings('.feedback-input').text(),
-      image: getUserImage()
+      image: this.getUserImage()
     };
 
-    console.log(getUserImage());
+    console.log(this.getUserImage());
 
     console.log(data);
 
