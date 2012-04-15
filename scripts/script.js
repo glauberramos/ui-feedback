@@ -62,6 +62,8 @@ require(["scripts/templates", "scripts/data"], function() {
       image: userImage
     };
 
+    $(this).siblings('.feedback-input').val('');
+
     $($(this).siblings('.comments')).append(Mustache.render(commentTemplate, data));
   });
 
