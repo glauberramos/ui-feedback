@@ -3,8 +3,10 @@ var feedbackTemplate =
 '  <div class="feedback-area"/>' +
 '    <label class="description">{{description}}</label>' +
 '    <div class="comments"></div>' +
+'  <div id="input-container">' +
 '    <input class="feedback-input" type="text" />' +
 '    <input type="button" class="feedback-submit" value="Ok" />' +
+'  </div>' +
 '</div>';
 
 var commentTemplate =
