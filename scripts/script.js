@@ -68,6 +68,8 @@ require(["scripts/templates", "scripts/data"], function() {
   });
 
   $('#load-image').click(function() {
+    console.log('load-image');
+
     FB.api({
       method: 'fql.query',
       query: 'SELECT pic_square FROM user WHERE uid=me()'
