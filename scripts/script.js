@@ -65,7 +65,7 @@ require(["scripts/templates", "scripts/data"], function() {
     $($(this).siblings('.comments')).append(Mustache.render(commentTemplate, data));
   });
 
-  $('#load-image').click() {
+  $('#load-image').click(function() {
     FB.api({
       method: 'fql.query',
       query: 'SELECT pic_square FROM user WHERE uid=me()'
@@ -73,5 +73,5 @@ require(["scripts/templates", "scripts/data"], function() {
     function(response) {
       userImage = response[0].pic_square;
     });
-  }
+  });
 });
