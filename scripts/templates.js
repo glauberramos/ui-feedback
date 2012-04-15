@@ -9,4 +9,4 @@ var feedbackTemplate =
 
 var commentTemplate = 
 '<img class"user-image" src="{{image}} />" ' +
-'<label class="commnet" type="text">{{text}}</label>';
+'<label class="comment">{{text}}</label>';
