@@ -76,8 +76,12 @@ require(["scripts/templates", "scripts/data"], function() {
     var data = {
       text: $(this).siblings('.feedback-input').text(),
       image: getUserImage()
-    }
+    };
 
-    $(this).siblings('#comments').append($(Mustache.render(commentTemplate, data)));
+    console.log(getUserImage());
+
+    console.log(data);
+
+    $(this).siblings('#comments').append(Mustache.render(commentTemplate, data));
   });
 });
