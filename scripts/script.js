@@ -73,6 +73,6 @@ require(["scripts/templates", "scripts/data"], function() {
       image: userImage
     };
 
-    $(this).siblings('.comments').append(Mustache.render(commentTemplate, data));
+    $($(this).siblings('.comments')).append(Mustache.render(commentTemplate, data));
   });
 });
