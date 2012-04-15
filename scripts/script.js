@@ -1,3 +1,5 @@
+var userImage;
+
 require(["scripts/templates", "scripts/data"], function() {
   var isShowing = true;
 
@@ -40,12 +42,10 @@ require(["scripts/templates", "scripts/data"], function() {
       query: 'SELECT pic_square FROM user WHERE uid=me()'
     },
     function(response) {
-      image = response[0].pic_square;
+      userImage = response[0].pic_square;
     });
 
-    console.log(image);
-
-    return image;
+    return userImage;
   }
   
   $('#add-new-feedback').click(function() {
@@ -70,19 +70,13 @@ require(["scripts/templates", "scripts/data"], function() {
     isShowing ? $('#show-hide-button').text("Hide All") : $('#show-hide-button').text("Show All");
   });
 
-  console.log('awd');
-
   loadInitialData();
 
   $('.feedback-submit').click(function() {
-    console.log('asd');
-
     var data = {
-      text: $(this).siblings('.feedback-input').text(),
+      text: $(this).siblings('.feedback-input').val(),
       image: getUserImage()
     };
-
-    console.log(getUserImage());
 
     console.log(data);
 
