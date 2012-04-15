@@ -11,6 +11,6 @@ var feedbackTemplate =
 
 var commentTemplate =
 '<div class="comment-container">' +
-'  <img class"user-image" src="{{image}}"></image>' +
+'  <img class="user-image" src="{{image}}"></image>' +
 '  <label class="comment">{{text}}</label>' +
 '</div>';
