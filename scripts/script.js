@@ -33,10 +33,6 @@ require(["scripts/templates", "scripts/data"], function() {
   };
   
   function getUserImage() {
-    var image; 
-    
-    console.log('get user image');
-
     FB.api({
       method: 'fql.query',
       query: 'SELECT pic_square FROM user WHERE uid=me()'
@@ -44,8 +40,6 @@ require(["scripts/templates", "scripts/data"], function() {
     function(response) {
       userImage = response[0].pic_square;
     });
-
-    return userImage;
   }
   
   $('#add-new-feedback').click(function() {
@@ -71,15 +65,14 @@ require(["scripts/templates", "scripts/data"], function() {
   });
 
   loadInitialData();
+  getUserImage();
 
   $('.feedback-submit').click(function() {
     var data = {
       text: $(this).siblings('.feedback-input').val(),
-      image: getUserImage()
+      image: userImage
     };
 
-    console.log(data);
-
-    $(this).siblings('#comments').append(Mustache.render(commentTemplate, data));
+    $(this).siblings('.comments').append(Mustache.render(commentTemplate, data));
   });
 });
