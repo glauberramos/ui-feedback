@@ -33,6 +33,8 @@ require(["scripts/templates", "scripts/data"], function() {
   function getUserImage() {
     var image; 
     
+    console.log('get user image');
+
     FB.api({
       method: 'fql.query',
       query: 'SELECT pic_square FROM user WHERE uid=me()'
@@ -40,6 +42,8 @@ require(["scripts/templates", "scripts/data"], function() {
     function(response) {
       image = response[0].pic_square;
     });
+
+    console.log(image);
 
     return image;
   }
@@ -75,10 +79,10 @@ require(["scripts/templates", "scripts/data"], function() {
 
     var data = {
       text: $(this).siblings('.feedback-input').text(),
-      image: this.getUserImage()
+      image: getUserImage()
     };
 
-    console.log(this.getUserImage());
+    console.log(getUserImage());
 
     console.log(data);
 
