@@ -2,7 +2,7 @@ require(["scripts/templates", "scripts/data"], function() {
   var isShowing = true;
 
   function createFeedback(feedbackData) {
-    return $(Mustache.render(commentsTemplate, feedbackData));
+    return $(Mustache.render(feedbackTemplate, feedbackData));
   };
 
   function initializeElements() {
@@ -29,7 +29,21 @@ require(["scripts/templates", "scripts/data"], function() {
         initializeElements();
       };
   };
+  
+  function getUserImage() {
+    var image; 
+    
+    FB.api({
+      method: 'fql.query',
+      query: 'SELECT pic_square FROM user WHERE uid=me()'
+    },
+    function(response) {
+      image = response[0].pic_square;
+    });
 
+    return image;
+  }
+  
   $('#add-new-feedback').click(function() {
       var div = createFeedback({description: 'testing this shit'});
 
@@ -51,6 +65,19 @@ require(["scripts/templates", "scripts/data"], function() {
 
     isShowing ? $('#show-hide-button').text("Hide All") : $('#show-hide-button').text("Show All");
   });
-  
+
+  console.log('awd');
+
   loadInitialData();
+
+  $('.feedback-submit').click(function() {
+    console.log('asd');
+
+    var data = {
+      text: $(this).siblings('.feedback-input').text(),
+      image: getUserImage()
+    }
+
+    $(this).siblings('#comments').append($(Mustache.render(commentTemplate, data)));
+  });
 });
