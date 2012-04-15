@@ -7,6 +7,8 @@ var feedbackTemplate =
 '    <input type="button" class="feedback-submit" value="Ok" />' +
 '</div>';
 
-var commentTemplate = 
-'<img class"user-image" src="{{image}} />" ' +
-'<label class="comment">{{text}}</label>';
+var commentTemplate =
+'<div class="comment-container">' +
+'  <img class"user-image" src="{{image}}"></image>' +
+'  <label class="comment">{{text}}</label>';
+'</div>' +
