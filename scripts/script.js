@@ -59,11 +59,11 @@ require(["scripts/templates", "scripts/data"], function() {
   $('.feedback-input').bind('keypress', function(e) {
     if(e.keyCode==13) {
       var data = {
-        text: $(this).siblings('.feedback-input').val(),
+        text: $(this).val(),
         image: userImage
       };
 
-      $(this).siblings('.feedback-input').val('');
+      $(this).val('');
 
       $($(this).parent().siblings('.comments')).append(Mustache.render(commentTemplate, data));
     } 
