@@ -56,15 +56,17 @@ require(["scripts/templates", "scripts/data"], function() {
 
   loadInitialData();
 
-  $('.feedback-submit').click(function() {
-    var data = {
-      text: $(this).siblings('.feedback-input').val(),
-      image: userImage
-    };
+  $('.feedback-submit').bind('keypress', function(e) {
+    if(e.keyCode==13) {
+      var data = {
+        text: $(this).siblings('.feedback-input').val(),
+        image: userImage
+      };
 
-    $(this).siblings('.feedback-input').val('');
+      $(this).siblings('.feedback-input').val('');
 
-    $($(this).parent().siblings('.comments')).append(Mustache.render(commentTemplate, data));
+      $($(this).parent().siblings('.comments')).append(Mustache.render(commentTemplate, data));
+    } 
   });
 
   $('#load-image').click(function() {

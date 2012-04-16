@@ -1,11 +1,12 @@
 var feedbackTemplate = 
 '<div id="{{id}}"" class="feedback">' +
 '  <div class="feedback-area"/>' +
+'  <div class="feedback-content">' +
 '    <label class="description">{{description}}</label>' +
 '    <div class="comments"></div>' +
-'  <div id="input-container">' +
-'    <input class="feedback-input" type="text" />' +
-'    <input type="button" class="feedback-submit" value="Ok" />' +
+'    <div id="input-container">' +
+'      <input class="feedback-input" type="text" />' +
+'    </div>' +
 '  </div>' +
 '</div>';
 
