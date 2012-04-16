@@ -56,7 +56,7 @@ require(["scripts/templates", "scripts/data"], function() {
 
   loadInitialData();
 
-  $('.feedback-submit').bind('keypress', function(e) {
+  $('.feedback-input').bind('keypress', function(e) {
     if(e.keyCode==13) {
       var data = {
         text: $(this).siblings('.feedback-input').val(),
