@@ -1,21 +1,19 @@
- var  initialData = [{
-    id: 1,
-    description: 'make logo bigger',
-    top: 19,
-    left: 159,
-    height: 100,
-    width: 110,
-    user_name: 'gramos',
-    progress: 'open',
-    date: '03/10/2012'
-    },{
-    id: 2,
-    description: 'cat color need to be yellow',
-    top: 362,
-    left: 619,
-    height: 110,
-    width: 170,
-    user_name: 'gramos',
-    progress: 'open',
-    date: '03/10/2012'
-    }];
+(function() {
+var feedbacks = [];
+
+var firstFeedback = new uifeedback.model.feedback(1, 'make logo bigger', 19, 159, 100, 110);
+var secondFeedback = new uifeedback.model.feedback(2, 'cat color need to be yellow', 362, 619, 110, 170);
+
+firstFeedback.addComment('I will work on that.', 1086314793);
+firstFeedback.addComment('Made some improvements in the colors.', 1086314793);
+
+secondFeedback.addComment('I will work on that.', 1086314793);
+secondFeedback.addComment('Made some improvements in the colors.', 1086314793);
+
+feedbacks.push(firstFeedback);
+feedbacks.push(secondFeedback);
+
+localStorage.feedbacks = localStorage.feedbacks || JSON.stringify(feedbacks);
+localStorage.loggedUser = 1086314793;
+
+})();

@@ -1,5 +1,3 @@
-var userImage;
-
 require(["scripts/templates", "scripts/data"], function() {
   var isShowing = true;
 
@@ -13,25 +11,50 @@ require(["scripts/templates", "scripts/data"], function() {
   };
 
   function loadInitialData() {
-     for(index in initialData) {
-        var feedbackData = initialData[index];
-        var div = createFeedback(feedbackData);
+    var initialData = JSON.parse(localStorage.feedbacks);
 
-        var coordinates = {
-          top: feedbackData.top,
-          left: feedbackData.left
-        };
-      
-        $(div).find('.feedback-area')
-          .css('height', feedbackData.height + 'px')
-          .css('width', feedbackData.width + 'px');
+    for(index in initialData) {
+      var feedbackData = initialData[index];
+      var div = createFeedback(feedbackData);
 
-        $('html').append($(div).offset(coordinates));
-      
-        initializeElements();
+      var coordinates = {
+        top: feedbackData.top,
+        left: feedbackData.left
       };
+      
+      $(div).find('.feedback-area')
+        .css('height', feedbackData.height + 'px')
+        .css('width', feedbackData.width + 'px');
+
+      $('html').append($(div).offset(coordinates));
+      
+      initializeElements();
+    };
   };
-  
+ 
+  function bindFeedbackInput(e) {
+    if(e.keyCode==13) {
+      var text = $(this).val();
+      var feedback = $(this).parent().parent();
+      var comment = new uifeedback.model.comment(text, localStorage.loggedUser);
+      var feedbacks = JSON.parse(localStorage.feedbacks);
+ 
+      function map() {
+        if(this.id == 1) {
+          this.comments.push(new uifeedback.model.comment('test', localStorage.loggedUser));
+        }
+      }
+ 
+      feedbacks = $(feedbacks).each(map);
+
+      localStorage.feedbacks = JSON.stringify(feedbacks);
+
+      $(this).val('');
+
+      $($(this).parent().siblings('.comments')).append(Mustache.render(commentTemplate, comment));
+    }
+  }
+ 
   $('#add-new-feedback').click(function() {
       var div = createFeedback({description: 'testing this shit'});
 
@@ -39,7 +62,7 @@ require(["scripts/templates", "scripts/data"], function() {
         top: 0,
         left: 0
       };
-
+   
       $('html').append(div.offset(coordinates));
   
       initializeElements();
@@ -56,28 +79,15 @@ require(["scripts/templates", "scripts/data"], function() {
 
   loadInitialData();
 
-  $('.feedback-input').bind('keypress', function(e) {
-    if(e.keyCode==13) {
-      var data = {
-        text: $(this).val(),
-        image: userImage
-      };
-
-      $(this).val('');
-
-      $($(this).parent().siblings('.comments')).append(Mustache.render(commentTemplate, data));
-    } 
-  });
+  $('.feedback-input').on('keypress', bindFeedbackInput);
 
   $('#load-image').click(function() {
-    console.log('load-image');
-
     FB.api({
       method: 'fql.query',
       query: 'SELECT pic_square FROM user WHERE uid=me()'
     },
     function(response) {
-      userImage = response[0].pic_square;
+      localStorage.loggedUser = response[0].pic_square;
     });
   });
 });
