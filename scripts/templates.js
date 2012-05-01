@@ -1,6 +1,6 @@
 var feedbackTemplate = 
-'<div id="{{id}}"" class="feedback">' +
-'  <div class="feedback-area"/>' +
+'<div id="{{id}}" class="feedback" style="top:{{top}}px;left:{{left}}px;">' +
+'  <div class="feedback-area" style="width:{{width}}px;height:{{height}}px;" />' +
 '  <div class="feedback-content">' +
 '    <label class="description">{{description}}</label>' +
 '    <div class="comments">' +

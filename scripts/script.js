@@ -1,4 +1,4 @@
-require(["scripts/templates", "scripts/data"], function() {
+require(["scripts/templates", "scripts/data", "scripts/util"], function() {
   var isShowing = true;
 
   function createFeedback(feedbackData) {
@@ -13,20 +13,11 @@ require(["scripts/templates", "scripts/data"], function() {
   function loadInitialData() {
     var initialData = JSON.parse(localStorage.feedbacks);
 
-    for(index in initialData) {
+    for(var index = 0; index < initialData.length; index++) {
       var feedbackData = initialData[index];
       var div = createFeedback(feedbackData);
-
-      var coordinates = {
-        top: feedbackData.top,
-        left: feedbackData.left
-      };
-      
-      $(div).find('.feedback-area')
-        .css('height', feedbackData.height + 'px')
-        .css('width', feedbackData.width + 'px');
-
-      $('html').append($(div).offset(coordinates));
+     
+	 $('html').append($(div));
       
       initializeElements();
     };
@@ -34,18 +25,16 @@ require(["scripts/templates", "scripts/data"], function() {
  
   function bindFeedbackInput(e) {
     if(e.keyCode==13) {
-      var text = $(this).val();
-      var feedback = $(this).parent().parent();
-      var comment = new uifeedback.model.comment(text, localStorage.loggedUser);
+      var comment = new uifeedback.model.comment($(this).val(), localStorage.loggedUser);
       var feedbacks = JSON.parse(localStorage.feedbacks);
  
-      function map() {
-        if(this.id == 1) {
-          this.comments.push(new uifeedback.model.comment('test', localStorage.loggedUser));
+      function map(feedbackId, comment){
+        if(this.id == feedbackId) {
+          this.comments.push(JSON.parse(comment.toJson()));
         }
       }
  
-      feedbacks = $(feedbacks).each(map);
+      feedbacks = $(feedbacks).each(map.curry($(this).parent().parent().parent().attr('id'), comment));
 
       localStorage.feedbacks = JSON.stringify(feedbacks);
 
@@ -56,16 +45,13 @@ require(["scripts/templates", "scripts/data"], function() {
   }
  
   $('#add-new-feedback').click(function() {
-      var div = createFeedback({description: 'testing this shit'});
+  	var feedback = new uifeedback.model.feedback();
 
-      var coordinates = {
-        top: 0,
-        left: 0
-      };
-   
-      $('html').append(div.offset(coordinates));
+	var div = createFeedback(JSON.parse(feedback.toJson()));
+
+	$('html').append(div);
   
-      initializeElements();
+	initializeElements();
   });
 
   $('#show-hide-button').click(function(event) {
