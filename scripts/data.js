@@ -10,10 +10,9 @@ firstFeedback.addComment('Made some improvements in the colors.', 1086314793);
 secondFeedback.addComment('I will work on that.', 1086314793);
 secondFeedback.addComment('Made some improvements in the colors.', 1086314793);
 
-feedbacks.push(firstFeedback);
-feedbacks.push(secondFeedback);
+feedbacks.push(firstFeedback.toJson());
+feedbacks.push(secondFeedback.toJson());
 
 localStorage.feedbacks = localStorage.feedbacks || JSON.stringify(feedbacks);
 localStorage.loggedUser = 1086314793;
-
 })();
