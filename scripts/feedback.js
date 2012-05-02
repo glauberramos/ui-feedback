@@ -14,8 +14,17 @@ var uifeedback = uifeedback || {};
 		comments.push(new uifeedback.model.comment(userId, text));
 	}
 
+	function commentToJson() {
+		var returnJson = '';
+		$(comments).each(function() {
+			returnJson += this.toJson() + ',';
+		});
+
+		return '[' + (!returnJson.empty() ? returnJson.slice(0, returnJson.length - 1) : returnJson) + ']';
+	}
+
 	function toJson() {
-		return '{"id":{0},"top":{1},"left":{2},"height":{3},"width":{4}}'.format(id, top, left, height, width);	    
+		return '{"id":{0},"top":{1},"left":{2},"height":{3},"width":{4},"comments":{5}}'.format(id, top, left, height, width, commentToJson());	    
 	}
 
 	return {

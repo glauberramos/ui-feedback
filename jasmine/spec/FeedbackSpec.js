@@ -1,5 +1,4 @@
-describe('Feedback', function() {
-	
+describe('feedback', function() {	
 	var feedback;
 
 	beforeEach(function() {
@@ -22,8 +21,23 @@ describe('Feedback', function() {
 		expect(feedback.width()).toEqual(100);
 	});
 	it('should return json according to the object', function() {
-		var expectedJson = '{"id":0,"top":0,"left":0,"height":100,"width":100}';
+		var expectedJson = '{"id":0,"top":0,"left":0,"height":100,"width":100,"comments":[]}';
 		
+		expect(feedback.toJson()).toEqual(expectedJson);
+	});
+	it('should return json according to the object with comments', function() {
+		var expectedJson = '{"id":0,"top":0,"left":0,"height":100,"width":100,"comments":[{"text":"asd","image":"./images/users/123.jpg"}]}';
+
+		feedback.addComment('asd', 123);		
+
+		expect(feedback.toJson()).toEqual(expectedJson);
+	});
+	it('should return json according to the object with 2 comments', function() {
+		var expectedJson = '{"id":0,"top":0,"left":0,"height":100,"width":100,"comments":[{"text":"asd","image":"./images/users/123.jpg"},{"text":"asd","image":"./images/users/123.jpg"}]}';
+
+		feedback.addComment('asd', 123);		
+		feedback.addComment('asd', 123);		
+
 		expect(feedback.toJson()).toEqual(expectedJson);
 	});
 });

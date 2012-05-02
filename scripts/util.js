@@ -28,3 +28,7 @@ var args = arguments;
 		: match;
 	});
 };
+
+String.prototype.empty = function() {
+	return this == '';
+}

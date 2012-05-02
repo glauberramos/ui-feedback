@@ -1,4 +1,4 @@
-require(["scripts/templates", "scripts/data", "scripts/util"], function() {
+require(["scripts/templates"], function() {
   var isShowing = true;
 
   function createFeedback(feedbackData) {
@@ -26,10 +26,10 @@ require(["scripts/templates", "scripts/data", "scripts/util"], function() {
   function bindFeedbackInput(e) {
     if(e.keyCode==13) {
       var comment = new uifeedback.model.comment($(this).val(), localStorage.loggedUser);
-      var feedbacks = JSON.parse(localStorage.feedbacks);
+      var feedbacks = $(JSON.parse(localStorage.feedbacks));
  
       function map(feedbackId, comment){
-        if(this.id == feedbackId) {
+	if(this.id == feedbackId) {
           this.comments.push(JSON.parse(comment.toJson()));
         }
       }
