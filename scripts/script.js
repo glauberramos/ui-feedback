@@ -1,8 +1,4 @@
 require(["scripts/templates"], function() {
-  function chrome() {
-    open $@ --args --allow-file-access-from-files
-  }
-  
   var isShowing = true;
 
   function createFeedback(feedbackData) {
