@@ -29,7 +29,7 @@ require(["scripts/templates"], function() {
       var feedbacks = $(JSON.parse(localStorage.feedbacks));
  
       function map(feedbackId, comment){
-	if(this.id == feedbackId) {
+      	if(this.id == feedbackId) {
           this.comments.push(JSON.parse(comment.toJson()));
         }
       }
