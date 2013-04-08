@@ -1,9 +1,8 @@
 var uifeedback = uifeedback || {};
 	uifeedback.model = uifeedback.model || {}
 
-	uifeedback.model.feedback = function(id, description, top, left, height, width) {
+	uifeedback.model.feedback = function(id, top, left, height, width) {
 	var id = id || 0;
-	var description = description || '';
 	var comments = [];
 	var top = top || 0;
 	var left = left || 0;
@@ -29,7 +28,6 @@ var uifeedback = uifeedback || {};
 
 	return {
 		id: function() { return id; },
-		description: function() { return description; },
 		top: function() { return top; },
 		left: function() { return left; },
 		height: function() { return height; },
